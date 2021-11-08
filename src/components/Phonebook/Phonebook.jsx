@@ -13,7 +13,9 @@ class Section extends Component {
 
   componentDidMount() {
     const contactsLS = JSON.parse(localStorage.getItem("contacts"));
-    this.setState({ contacts: contactsLS });
+    if (contactsLS) {
+      this.setState({ contacts: contactsLS });
+    }
   }
 
   componentDidUpdate() {
@@ -42,20 +44,24 @@ class Section extends Component {
   };
 
   getFilteredContacts = () => {
-    return this.state.contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
-    );
+    if (this.state.contacts) {
+      return this.state.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+      );
+    }
   };
 
   isInclude = (name) => {
-    return this.state.contacts.some(
-      (contact) => contact.name.toLowerCase() === name.toLowerCase()
-    );
+    if (this.state.contacts) {
+      return this.state.contacts.some(
+        (contact) => contact.name.toLowerCase() === name.toLowerCase()
+      );
+    }
   };
 
   deleteContact = (e) => {
     const delIdx = this.state.contacts.findIndex((contact) => {
-      return contact.id === e.target.dataset.contactId;
+      return contact.id === e.currentTarget.dataset.contactId;
     });
 
     this.setState((prev) => {
