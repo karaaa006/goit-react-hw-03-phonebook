@@ -1,11 +1,16 @@
-import "./App.scss";
+import { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>It's work!</h1>
-    </div>
-  );
+import "./App.css";
+import Phonebook from "./components/Phonebook/Phonebook";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Phonebook />
+      </div>
+    );
+  }
 }
 
 export default App;
