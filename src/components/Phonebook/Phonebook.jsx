@@ -59,9 +59,9 @@ class Section extends Component {
     }
   };
 
-  deleteContact = (e) => {
+  deleteContact = (contactId) => {
     const delIdx = this.state.contacts.findIndex((contact) => {
-      return contact.id === e.currentTarget.dataset.contactId;
+      return contact.id === contactId;
     });
 
     this.setState((prev) => {

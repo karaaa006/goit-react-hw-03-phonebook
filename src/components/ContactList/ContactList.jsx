@@ -14,8 +14,9 @@ export function ContactList({ contacts, handleDel }) {
               </p>
               <button
                 className={s.delBtn}
-                data-contact-id={contact.id}
-                onClick={handleDel}
+                onClick={() => {
+                  handleDel(contact.id);
+                }}
               >
                 <TiDelete className={s.icon} />
               </button>
